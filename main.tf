@@ -91,12 +91,17 @@ data "aws_ami" "ubuntu"{
 resource "aws_instance" "ubuntu_aeis_instance_ubuntu" {
   ami = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  subnet_id = aws_subnet.public_subnet.id
   network_interface {
     network_interface_id = aws_network_interface.aeis_network_interface.id
     device_index = 0 //Aquí se define el´índice del dispositivo, mirar la ip de la interfaz de red 0 sería la posición 0
   
   }
+  user_data = <<-EOF
+              #!bin/bash
+              sudo apt update -y
+              sudo apt install nginx -y
+              sudo systemctl start nginx
+              EOF
   tags = {
     Name = "AEIS ubuntu instance"
   }
@@ -104,15 +109,21 @@ resource "aws_instance" "ubuntu_aeis_instance_ubuntu" {
 
 resource "aws_network_interface" "aeis_network_interface" {
   subnet_id = aws_subnet.public_subnet.id
-  private_ip = ["10.0.1.124"]
+  private_ips       = ["10.0.1.124"]  # Lista de IPs privadas
   security_groups = [aws_security_group.web_server_sg.id]
 }
 
 resource "aws_eip" "aeis_eip" {
-  //associate with the network interface
-  //associate_with_private_ip = 
-  //network_interface = 
-  associate_with_private_ip = "10.0.1.124"
   network_interface = aws_network_interface.aeis_network_interface.id
+  associate_with_private_ip = tolist(aws_network_interface.aeis_network_interface.private_ips)[0]
+  instance = aws_instance.ubuntu_aeis_instance_ubuntu.id
+}
+
+output "public_aeis_ip" {
+  value = aws_eip.aeis_eip.public_ip
+}
+output "private_aeis_ip" {
+  value = aws_network_interface.aeis_network_interface.private_ips
   
 }
+
