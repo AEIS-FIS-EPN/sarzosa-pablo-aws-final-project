@@ -1,72 +1,49 @@
-# Terraform Configuration Setup
 
-This repository contains Terraform configuration files to provision and manage infrastructure on [AWS](https://aws.amazon.com/).
+# Pablo's Webpage Project
 
-## Terraform Version
+Welcome to my personal webpage project! This is a small web application developed using React, with Node.js and Vite. The project showcases my skills and interests, particularly in software development with React, Flutter, and Angular, as well as my curiosity about DevOps.
 
-This Terraform configuration is tested and compatible with Terraform version 1.7.5.
+## Project Structure
 
-## Prerequisites
+The hero section is the entry point of the webpage, introducing myself and highlighting my areas of interest and expertise.
 
-Before you begin, ensure you have the following prerequisites installed:
+- `Hero` component: Represents the main introductory section of the webpage.
 
-- [Terraform](https://www.terraform.io/downloads.html) version 1.7.5 or later
-- AWS account with appropriate permissions
-- AWS CLI configured with access keys
+```jsx
+/* eslint-disable react/no-unescaped-entities */
+import "@components/Hero/Hero.css";
 
-## Usage
+export function Hero() {
+  return (
+    <section id="hero" className="hero">
+      <div className="container-hero container-fluid d-flex bg-light flex-column justify-content-center">
+        <img className="user-image img-fluid mx-auto rounded-circle" src="./Hero/me.JPG" alt="Pablo Sarzosa">
+        <h1 className="d-flex mt-5">Hello, I am Pablo Sarzosa</h1>
+        <h2 className="d-flex mb-5">Software developer trainee. Learning React, Flutter, and Angular. DevOps and IT interested.</h2>
+        <img className="img-fluid mx-auto mt-5 hero-image" src="./Hero/hero-me.png" alt="Hero Image">
+      </div>
+      <div id="about" className="container-hero-2 container-fluid bg-black d-flex flex-column justify-content-center">
+        <h2 className="text-light mx-auto">Let's meet Pablo Sarzosa</h2>
+        <p className="text-light d-flex mx-auto">Aspiring software developer focused on Node.JS, React, Flutter, and Angular. Interested in DevOps and seeking a position to deploy my knowledge and refine my practical skills. Motivated by the continuous learning of emerging technologies and innovative tools.</p>
+      </div>
+    </section>
+  )
+}
+```
 
-Follow these steps to set up and use the Terraform configuration:
+## Setup and Development
 
-1. Clone the repository:
+To run this project locally, ensure you have Node.js and npm/pnpm installed. Then follow these steps:
 
-    ```bash
-    git clone <repository_url>
-    ```
-
-2. Navigate to the directory containing the Terraform configuration files:
-
-    ```bash
-    cd terraform-aws-project
-    ```
-
-3. Initialize Terraform:
-
-    ```bash
-    terraform init
-    ```
-
-4. Review the Terraform plan to understand the changes that will be applied:
-
-    ```bash
-    terraform plan
-    ```
-
-5. Apply the Terraform configuration to create or update resources:
-
-    ```bash
-    terraform apply
-    ```
-
-6. Confirm the changes when prompted by Terraform.
-
-7. When you no longer need the infrastructure, you can destroy it using the following command:
-
-    ```bash
-    terraform destroy
-    ```
-
-## Configuration Files
-
-### main.tf
-
-The `main.tf` file contains the main Terraform configuration for provisioning AWS resources. It defines resources such as VPC, subnets, internet gateway, route tables, etc.
+1. Clone the repository.
+2. Navigate to the project directory and install dependencies with `pnpm install`.
+3. Start the development server with `pnpm run dev`.
+4. Open `http://localhost:3000` to view the webpage in the browser.
 
 ## Contributing
 
-Contributions to improve this Terraform configuration are welcome! Feel free to open issues for suggestions or submit pull requests with enhancements.
+I'm open to contributions! If you have suggestions or improvements, feel free to fork the project and submit a pull request.
 
 ## License
 
-This Terraform configuration is open source and available under the [MIT License](LICENSE).
-# sarzosa-pablo-aws-final-project
+This project is open-sourced under the MIT License.

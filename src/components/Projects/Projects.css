@@ -1,0 +1,67 @@
+.seccion-titulo {
+  font-family: "Kumar One", serif;
+  padding: 2rem 0.5rem 1rem 0.5rem;
+  text-align: center;
+}
+.seccion-descripcion {
+  font-size: 1.4rem;
+  text-align: center;
+  max-width: 100%;
+  padding: 0.5rem;
+  padding-bottom: 5rem;
+}
+.project-image {
+  height: 100%;
+  width: 100%;
+  border-radius: 7%;
+  transition: all 0.2s ease;
+}
+
+
+
+.overlay {
+  transition: all 0.2s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.project-div {
+  position: relative;
+  margin: 1rem 0.5rem;
+  border-radius: 7%;
+
+  
+}
+.overlay p {
+  font-size: 25px;
+  font-weight: bold;
+}
+.project-div:hover .project-image {
+  opacity: 0.2;
+}
+.project-div:hover .overlay {
+  opacity: 1;
+}
+.overlay img {
+  width: 50px;
+  margin-bottom: 0;
+  margin: 0.5rem;
+}
+
+.btn-more-projects{
+    margin: 2rem 0;
+    width: 15rem;
+    border: 1px solid black;
+    padding: 0;
+    font-size: 0.8rem;
+    align-items: center;
+}
+.btn-more-projects:hover{
+    border: 1px solid black;
+}
+.btn-more-projects img{
+    margin: 10px;
+}
+

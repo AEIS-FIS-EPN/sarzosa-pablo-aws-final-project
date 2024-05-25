@@ -1,0 +1,57 @@
+.testimonials-title {
+  margin-bottom: 1rem;
+  font-family: "Kumar One", serif;
+  margin: 5rem 0 2rem 0;
+}
+.testimonials {
+  padding: 2rem 0 4rem 0;
+}
+
+.testimonials .carousel {
+  max-width: 700px;
+  margin: 2rem;
+  max-height: 700px;
+  padding-bottom: 4rem;
+}
+.testimonials .carousel-item img {
+  width: 150px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 3rem;
+}
+
+.carousel .container {
+  justify-content: center;
+  width: 100%;
+  height: 90%;
+}
+
+.testimonials-texto {
+  max-width: 70%;
+  height: auto;
+  text-align: center;
+  font-family: serif;
+  font-size: 1.2rem;
+}
+.testimonials-footer {
+  font-weight: bold;
+}
+.testimonials-footer p {
+  margin: 0;
+  text-align: center;
+}
+
+.testimonials-footer .cliente {
+  font-size: 1.2rem;
+}
+.testimonials-footer .cargo {
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 800px) {
+    .testimonial-image {
+        width: 100%; /* Make the image responsive */
+        height: auto; /* Preserve the aspect ratio */
+    }
+}

@@ -1,0 +1,48 @@
+.container-experience {
+  font-size: 1.4rem;
+  margin-bottom: 10rem;
+}
+.row-experience {
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.my-experience-title{
+  font-family: "Kumar One", serif;
+  padding: 2rem 0.5rem 1rem 0.5rem;
+  text-align: center;
+}
+
+.data {
+  font-size: 1.4rem;
+  text-align: center;
+  border: 1.5px solid lightgray;
+  padding: 1rem;
+  font-size: medium;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+.data:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.div-image {
+  display: flex;
+  border-radius: 50%;
+  background-color: black;
+  width: 8rem;
+  height: 8rem;
+}
+
+.icon-experience {
+  font-size: 5rem;
+  color: green;
+}
+
+.badge{
+    margin: 5px;
+}
