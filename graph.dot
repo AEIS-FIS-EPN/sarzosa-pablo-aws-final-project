@@ -1,0 +1,88 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] module.ecr.aws_ecr_repository.ecr_repository_aeis (expand)" [label = "module.ecr.aws_ecr_repository.ecr_repository_aeis", shape = "box"]
+		"[root] module.eip.aws_eip.aeis_eip (expand)" [label = "module.eip.aws_eip.aeis_eip", shape = "box"]
+		"[root] module.network_interface.aws_network_interface.aeis_network_interface (expand)" [label = "module.network_interface.aws_network_interface.aeis_network_interface", shape = "box"]
+		"[root] module.security_groups.aws_security_group.web_server_sg (expand)" [label = "module.security_groups.aws_security_group.web_server_sg", shape = "box"]
+		"[root] module.subnet.aws_internet_gateway.fis_public_internet_gateway (expand)" [label = "module.subnet.aws_internet_gateway.fis_public_internet_gateway", shape = "box"]
+		"[root] module.subnet.aws_route_table.fis_public_subnet_route_table (expand)" [label = "module.subnet.aws_route_table.fis_public_subnet_route_table", shape = "box"]
+		"[root] module.subnet.aws_route_table_association.fis_public_association (expand)" [label = "module.subnet.aws_route_table_association.fis_public_association", shape = "box"]
+		"[root] module.subnet.aws_subnet.private_subnet (expand)" [label = "module.subnet.aws_subnet.private_subnet", shape = "box"]
+		"[root] module.subnet.aws_subnet.public_subnet (expand)" [label = "module.subnet.aws_subnet.public_subnet", shape = "box"]
+		"[root] module.ubuntu_ami.data.aws_ami.ubuntu (expand)" [label = "module.ubuntu_ami.data.aws_ami.ubuntu", shape = "box"]
+		"[root] module.ubuntu_instance.aws_instance.ubuntu_aeis_instance_ubuntu (expand)" [label = "module.ubuntu_instance.aws_instance.ubuntu_aeis_instance_ubuntu", shape = "box"]
+		"[root] module.vpc.aws_vpc.fis_vpc (expand)" [label = "module.vpc.aws_vpc.fis_vpc", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] module.ecr (close)" -> "[root] module.ecr.output.url_ecr_repository_aeis (expand)"
+		"[root] module.ecr.aws_ecr_repository.ecr_repository_aeis (expand)" -> "[root] module.ecr (expand)"
+		"[root] module.ecr.aws_ecr_repository.ecr_repository_aeis (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.ecr.output.url_ecr_repository_aeis (expand)" -> "[root] module.ecr.aws_ecr_repository.ecr_repository_aeis (expand)"
+		"[root] module.eip (close)" -> "[root] module.eip.output.eip_id (expand)"
+		"[root] module.eip (expand)" -> "[root] module.ubuntu_instance (close)"
+		"[root] module.eip.aws_eip.aeis_eip (expand)" -> "[root] module.eip.var.instance_id (expand)"
+		"[root] module.eip.aws_eip.aeis_eip (expand)" -> "[root] module.eip.var.network_interface_id (expand)"
+		"[root] module.eip.aws_eip.aeis_eip (expand)" -> "[root] module.eip.var.network_interface_private_ip (expand)"
+		"[root] module.eip.output.eip_id (expand)" -> "[root] module.eip.aws_eip.aeis_eip (expand)"
+		"[root] module.eip.var.instance_id (expand)" -> "[root] module.eip (expand)"
+		"[root] module.eip.var.network_interface_id (expand)" -> "[root] module.eip (expand)"
+		"[root] module.eip.var.network_interface_private_ip (expand)" -> "[root] module.eip (expand)"
+		"[root] module.network_interface (close)" -> "[root] module.network_interface.output.network_interface_id (expand)"
+		"[root] module.network_interface (close)" -> "[root] module.network_interface.output.private_ips (expand)"
+		"[root] module.network_interface (expand)" -> "[root] module.security_groups (close)"
+		"[root] module.network_interface (expand)" -> "[root] module.subnet (close)"
+		"[root] module.network_interface.aws_network_interface.aeis_network_interface (expand)" -> "[root] module.network_interface.var.public_subnet_id (expand)"
+		"[root] module.network_interface.aws_network_interface.aeis_network_interface (expand)" -> "[root] module.network_interface.var.security_group_id (expand)"
+		"[root] module.network_interface.output.network_interface_id (expand)" -> "[root] module.network_interface.aws_network_interface.aeis_network_interface (expand)"
+		"[root] module.network_interface.output.private_ips (expand)" -> "[root] module.network_interface.aws_network_interface.aeis_network_interface (expand)"
+		"[root] module.network_interface.var.public_subnet_id (expand)" -> "[root] module.network_interface (expand)"
+		"[root] module.network_interface.var.security_group_id (expand)" -> "[root] module.network_interface (expand)"
+		"[root] module.security_groups (close)" -> "[root] module.security_groups.output.security_group_id (expand)"
+		"[root] module.security_groups (expand)" -> "[root] module.vpc (close)"
+		"[root] module.security_groups.aws_security_group.web_server_sg (expand)" -> "[root] module.security_groups.var.vpc_id (expand)"
+		"[root] module.security_groups.output.security_group_id (expand)" -> "[root] module.security_groups.aws_security_group.web_server_sg (expand)"
+		"[root] module.security_groups.var.vpc_id (expand)" -> "[root] module.security_groups (expand)"
+		"[root] module.subnet (close)" -> "[root] module.subnet.aws_route_table_association.fis_public_association (expand)"
+		"[root] module.subnet (close)" -> "[root] module.subnet.aws_subnet.private_subnet (expand)"
+		"[root] module.subnet (close)" -> "[root] module.subnet.output.public_subnet_id (expand)"
+		"[root] module.subnet (expand)" -> "[root] module.vpc (close)"
+		"[root] module.subnet.aws_internet_gateway.fis_public_internet_gateway (expand)" -> "[root] module.subnet.var.vpc_id (expand)"
+		"[root] module.subnet.aws_route_table.fis_public_subnet_route_table (expand)" -> "[root] module.subnet.aws_internet_gateway.fis_public_internet_gateway (expand)"
+		"[root] module.subnet.aws_route_table_association.fis_public_association (expand)" -> "[root] module.subnet.aws_route_table.fis_public_subnet_route_table (expand)"
+		"[root] module.subnet.aws_route_table_association.fis_public_association (expand)" -> "[root] module.subnet.aws_subnet.public_subnet (expand)"
+		"[root] module.subnet.aws_subnet.private_subnet (expand)" -> "[root] module.subnet.var.vpc_id (expand)"
+		"[root] module.subnet.aws_subnet.public_subnet (expand)" -> "[root] module.subnet.var.vpc_id (expand)"
+		"[root] module.subnet.output.public_subnet_id (expand)" -> "[root] module.subnet.aws_subnet.public_subnet (expand)"
+		"[root] module.subnet.var.vpc_id (expand)" -> "[root] module.subnet (expand)"
+		"[root] module.ubuntu_ami (close)" -> "[root] module.ubuntu_ami.output.ubuntu (expand)"
+		"[root] module.ubuntu_ami.data.aws_ami.ubuntu (expand)" -> "[root] module.ubuntu_ami (expand)"
+		"[root] module.ubuntu_ami.data.aws_ami.ubuntu (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.ubuntu_ami.output.ubuntu (expand)" -> "[root] module.ubuntu_ami.data.aws_ami.ubuntu (expand)"
+		"[root] module.ubuntu_instance (close)" -> "[root] module.ubuntu_instance.output.ubuntu_instance_id (expand)"
+		"[root] module.ubuntu_instance (expand)" -> "[root] module.network_interface (close)"
+		"[root] module.ubuntu_instance.aws_instance.ubuntu_aeis_instance_ubuntu (expand)" -> "[root] module.ubuntu_instance.var.ami_id (expand)"
+		"[root] module.ubuntu_instance.aws_instance.ubuntu_aeis_instance_ubuntu (expand)" -> "[root] module.ubuntu_instance.var.network_interface_id (expand)"
+		"[root] module.ubuntu_instance.output.ubuntu_instance_id (expand)" -> "[root] module.ubuntu_instance.aws_instance.ubuntu_aeis_instance_ubuntu (expand)"
+		"[root] module.ubuntu_instance.var.ami_id (expand)" -> "[root] module.ubuntu_ami.output.ubuntu (expand)"
+		"[root] module.ubuntu_instance.var.ami_id (expand)" -> "[root] module.ubuntu_instance (expand)"
+		"[root] module.ubuntu_instance.var.network_interface_id (expand)" -> "[root] module.ubuntu_instance (expand)"
+		"[root] module.vpc (close)" -> "[root] module.vpc.output.fis_vpc_id (expand)"
+		"[root] module.vpc.aws_vpc.fis_vpc (expand)" -> "[root] module.vpc (expand)"
+		"[root] module.vpc.aws_vpc.fis_vpc (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.vpc.output.fis_vpc_id (expand)" -> "[root] module.vpc.aws_vpc.fis_vpc (expand)"
+		"[root] output.private_aeis_ip (expand)" -> "[root] module.network_interface.output.private_ips (expand)"
+		"[root] output.public_aeis_ip (expand)" -> "[root] module.eip.output.eip_id (expand)"
+		"[root] output.url_ecr_repository_aeis (expand)" -> "[root] module.ecr.output.url_ecr_repository_aeis (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.ecr.aws_ecr_repository.ecr_repository_aeis (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.eip.aws_eip.aeis_eip (expand)"
+		"[root] root" -> "[root] module.ecr (close)"
+		"[root] root" -> "[root] module.eip (close)"
+		"[root] root" -> "[root] module.ubuntu_ami (close)"
+		"[root] root" -> "[root] output.private_aeis_ip (expand)"
+		"[root] root" -> "[root] output.public_aeis_ip (expand)"
+		"[root] root" -> "[root] output.url_ecr_repository_aeis (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+	}
+}
+
