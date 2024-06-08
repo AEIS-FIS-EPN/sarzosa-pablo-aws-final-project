@@ -5,7 +5,12 @@ provider "aws" {
 
 resource "aws_vpc" "fis_vpc" { #Defining the VPC with a specific CIDR block
   cidr_block = "10.0.0.0/16"
+  tags = {
+    Name = "FIS VPC"
+  }
 }
+
+
 
 resource "aws_subnet" "public_subnet" { #Defining the public subnet with a specific CIDR block
   cidr_block = "10.0.1.0/24"
@@ -17,12 +22,14 @@ resource "aws_subnet" "private_subnet" { #Defining the private subnet with a spe
   vpc_id     = aws_vpc.fis_vpc.id
 }
 
+
+
 resource "aws_internet_gateway" "fis_public_internet_gateway" { #Defining the internet gateway
   vpc_id = aws_vpc.fis_vpc.id
 }
 
 resource "aws_route_table" "fis_public_subnet_route_table" { #Defining the route table for the public subnet, allowing all traffic to the internet
-  vpc_id = aws_vpc.fis_vpc.id
+  vpc_id =  aws_vpc.fis_vpc.id
 
   route {
     cidr_block = "0.0.0.0/0"
